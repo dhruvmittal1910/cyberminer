@@ -1,0 +1,68 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f1f1;
+}
+
+.login-form {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form input{
+    width: 92%;
+}
+
+input[type='text'],
+input[type='password'] {
+    
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap between boxes */
+  }
+  
+  .book-item {
+    flex: 0 1 calc(25% - 20px); /* Adjust the width of each box */
+    background-color: #f0f0f0; /* Background color of each box */
+    padding: 20px;
+    border: 1px solid #ccc; /* Border of each box */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Adjust the margin between rows */
+  }
+  
+  /* Style for button */
+  .book-item button {
+    margin-top: 10px;
+  }
