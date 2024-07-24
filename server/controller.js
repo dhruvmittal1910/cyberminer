@@ -5,19 +5,9 @@ const fs = require('fs');
 const multer = require("multer")
 const path = require("path")
 
-// set storage
-// const storage = multer.diskStorage({
-//     destination: (req,file,cb)=>{
-//         cb(null,'/uploads')
-//     },
-//     filename:(req,res,cb)=>{
-//         cb(null,Daate.now()+path.extname(file.originalname))
-//     }
-// })
-
-// const upload = multer({
-//     storage: storage
-// })
+module.exports.getting=async(req,res)=>{
+    res.send("working")
+}
 
 
 // autofill

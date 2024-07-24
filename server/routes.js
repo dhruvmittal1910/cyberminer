@@ -3,7 +3,9 @@ const multer=require('multer')
 const path=require('path')
 const router=Router()
 
-const {getUrl,addUrl,getUsers,addUsers,newUsers,getAds,addAds,getSuggestions}=require("./controller")
+const {getUrl,addUrl,getUsers,addUsers,newUsers,getAds,addAds,getSuggestions,getting}=require("./controller")
+
+router.get("/",getting)
 
 router.get("/get",getUrl)
 
