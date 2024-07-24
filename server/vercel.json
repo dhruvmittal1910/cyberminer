@@ -1,5 +1,44 @@
 {
-    "version":2,
-    "builds":[{"src":"./index.js","use":"@vercel/node"}],
-    "routes":[{"src":"/(.*)","dest":"/"},{ "src": "/get", "dest": "./routes.js" }]
+    "version": 2,
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        },
+        {
+            "src": "/get",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/add",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/login",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/signin",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/getAds",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/getSuggestions",
+            "dest": "./routes.js"
+        },
+        {
+            "src": "/addAds",
+            "dest": "./routes.js"
+        }
+
+    ]
 }

@@ -33,7 +33,7 @@ function Advertiser() {
     }
     console.log(addedData)
     // write the axios query to add to db
-    await axios.post("http://localhost:3333/addAds",{photo,description,amount})
+    await axios.post(process.env.REACT_APP_API_URL + "/addAds",{photo,description,amount})
       .then((res) => {
         console.log(res)
         const parsedData = JSON.parse(res.config.data)

@@ -21,7 +21,7 @@ function LoginPage(){
         }
 
         try{
-            await axios.post("http://localhost:3333/login",{
+            await axios.post(process.env.REACT_APP_API_URL + "/login",{
                 data:data
         }).then((res)=>{
             if(res.data=="Success"){

@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:3333/get")
+      const response = await axios.get(process.env.REACT_APP_API_URL + "/get")
       setData(response.data)
       const desc = response.data.map(item => item.description)
 
