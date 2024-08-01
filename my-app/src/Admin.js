@@ -28,7 +28,7 @@ function Admin() {
       console.log(addedData)
 
       // write the axios query to add to db
-      await axios.post(process.env.REACT_APP_API_URL + "/add", { data: addedData })
+      await axios.post("http://localhost:3333/add", { data: addedData })
         .then((res) => {
           // const parsedData = JSON.parse(res.config.data)
           setUrl("")

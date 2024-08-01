@@ -3,38 +3,53 @@ import "./LoginPage.css"
 import { useEffect, useState } from 'react';
 import axios from "axios"
 // import { useNavigate,Link } from "react-router-dom";
-import { useLocation,useNavigate,Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
-function LoginPage(){
+function LoginPage() {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const navigate=useNavigate();
+    const navigate = useNavigate();
+
+    const items = localStorage.getItem(1)
+
+    if (items) {
+        const it = JSON.parse(items)
+        console.log(it.expiry)
+        const now = new Date()
+
+        if (now.getTime() > it.expiry) {
+            localStorage.removeItem(1)
+        }
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Here you can add your login logic
-        const data={
-            username:username,
-            password:password
+        const data = {
+            username: username,
+            password: password
         }
 
-        try{
-            await axios.post(process.env.REACT_APP_API_URL + "/login",{
-                data:data
-        }).then((res)=>{
-            if(res.data=="Success"){
-                navigate("/admin")
-            }else{
-                alert("Wrong Password")
-            }
-        }).catch(err=>{
-            alert("wrong details")
-            console.log(err)
-        })
+        try {
+            await axios.post("http://localhost:3333/login", {
+                data: data
+            }).then((res) => {
+                if (res.data == "Success") {
 
-        }catch(e){
+                    navigate("/admin")
+
+                } else {
+                    alert("Wrong Password")
+                }
+            }).catch(err => {
+                alert("wrong details")
+                console.log(err)
+            })
+
+        } catch (e) {
             console.log(e)
         }
 
@@ -46,7 +61,7 @@ function LoginPage(){
         setPassword('');
 
     };
-    const redirectTo=()=>{
+    const redirectTo = () => {
         navigate("/signUp")
     }
 
@@ -71,9 +86,9 @@ function LoginPage(){
                 <button onClick={redirectTo}>
                     SignUp
                 </button>
-                
+
             </form>
-            
+
 
         </div>
     )

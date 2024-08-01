@@ -43,6 +43,6 @@ const upload = multer({
     storage: storage
 })
 
-router.post("/addAds",upload.single("photo"),addAds)
+router.post("/addAds",addAds)
 
 module.exports=router

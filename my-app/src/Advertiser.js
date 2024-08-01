@@ -13,15 +13,16 @@ function Advertiser() {
   const [amount, setAmount] = useState("")
 
   const handleImageChange=(e)=>{
-    const file=e.target.files[0]
+    const file=e.target.files[0].name
     const reader=new FileReader()
-    reader.onloadend=()=>{
-      setPhoto(reader.result)
-    }
-
-    if(file){
-      reader.readAsDataURL(file)
-    }
+    // reader.onloadend=()=>{
+    //   setPhoto(reader.result)
+    // }
+    
+    setPhoto(file)
+    // if(file){
+    //   reader.readAsDataURL(file)
+    // }
   }
 
   const handleSubmit = async (event) => {
@@ -33,7 +34,7 @@ function Advertiser() {
     }
     console.log(addedData)
     // write the axios query to add to db
-    await axios.post(process.env.REACT_APP_API_URL + "/addAds",{photo,description,amount})
+    await axios.post("http://localhost:3333/addAds",{photo,description,amount})
       .then((res) => {
         console.log(res)
         const parsedData = JSON.parse(res.config.data)

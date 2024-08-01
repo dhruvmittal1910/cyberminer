@@ -5,6 +5,7 @@ import Microlink from '@microlink/react'
 // import { redirect } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import fuzzysort from "fuzzysort"
+// import { now } from 'mongoose';
 function App() {
   const [userInput1, setUserInput1] = useState("")
   const [selectedValue, setSelectedValue] = useState('AND');
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get(process.env.REACT_APP_API_URL + "/get")
+      const response = await axios.get("http://localhost:3333/get")
       setData(response.data)
       const desc = response.data.map(item => item.description)
 
@@ -131,6 +132,15 @@ function App() {
   }
 
   const redirectToAdd = () => {
+    const now = new Date();
+
+    const items={
+      value:"advertiser",
+      expiry:new Date().getTime()+10000
+    }
+    console.log(items)
+    
+    localStorage.setItem(1,JSON.stringify(items))
     navigate("/advertiser")
   }
 

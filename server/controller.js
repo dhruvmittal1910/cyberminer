@@ -5,7 +5,7 @@ const fs = require('fs');
 const multer = require("multer")
 const path = require("path")
 
-module.exports.getting=async(req,res)=>{
+module.exports.getting = async (req, res) => {
     res.send("working")
 }
 
@@ -80,26 +80,10 @@ module.exports.getAds = async (req, res) => {
 
 
 module.exports.addAds = async (req, res) => {
-    try {
-        const { photoPath, description, amount } = req.body
-        // Decode base64 image and save it
-        const base64Data = photoPath.replace(/^data:photoPath\/\w+;base64,/, "");
-        const buffer = Buffer.from(base64Data, 'base64');
-        const photo = `uploads/${Date.now()}.png`;
-        fs.writeFileSync(path.join(__dirname, photo), buffer);
-
-        const newItem = new Item({
-            photo,
-            description,
-            amount
-        });
-
-        await newItem.save()
-        res.status(201).send('Item saved successfully');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Error saving item');
-    }
+    adModel.create(req.body).then((res) => {
+        res.statu(201).send(res)
+    }).catch(err => res.send(err))
+    
 
 }
 

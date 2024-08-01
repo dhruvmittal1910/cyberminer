@@ -17,7 +17,7 @@ function SignIn() {
         }
         console.log(data)
         // Here you can add your signin logic
-        await axios.post(process.env.REACT_APP_API_URL + "/signin", {
+        await axios.post("http://localhost:3333/signin", {
             data: data
         }).then((res) => {
             navigate("/admin")
